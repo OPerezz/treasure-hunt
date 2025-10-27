@@ -12,7 +12,7 @@
 <body class="flex">
     <div class="container flex">
         <div style="max-width: 50%; height: 1400px;" class="titulo-jogo papiro flex">
-            <img style="margin-top: 100px;" src="assets/img/navio-pirata.png" alt="Navio Pirata">
+            <img src="assets/img/navio-pirata.png" alt="Navio Pirata">
             <h1 style="margin-bottom: 50px;">A Busca pelo Tesouro Perdido</h1>
             <p class="descritivo">
                 Ahoy, Marujos Corajosos!<br><br>
@@ -45,37 +45,42 @@
                 ordem, cada erro é uma lição.<br><br>
 
                 Inicia a tua jornada, desvenda os segredos e encontra o lendário Tesouro Perdido!</p>
+
+            <button class="close" id="close-button">IR PARA O JOGO</button>
         </div>
 
-        <div class="table hidden">
+        <div class="container-table hidden">
             <div class="titulo-jogo flex">
                 <img src="assets/img/navio-pirata.png" alt="Navio Pirata">
                 <h1>A Busca pelo Tesouro Perdido</h1>
             </div>
-            <div id="game-board">
-            </div>
+            <div class="table flex">
 
-            <div id="controls">
-
-                <h2>Itinerário Maritímo (Sequencia)</h2>
-                <div id="command-sequence">
+                <div id="game-board">
                 </div>
 
-                <div id="action-buttons">
-                    <button id="run-button">⚓ Navegar</button>
-                    <button id="clear-button">❌ Limpar Sequência</button>
-                    <button id="reset-button">🔄 Reiniciar Jogo</button>
-                </div>
+                <div id="controls">
 
+                    <h2>Itinerário Maritímo (Sequencia)</h2>
+                    <div id="command-sequence">
+                    </div>
+
+                    <div id="action-buttons">
+                        <button id="run-button">⚓ Navegar</button>
+                        <button id="clear-button">❌ Limpar Sequência</button>
+                        <button id="reset-button">🔄 Reiniciar Jogo</button>
+                    </div>
+
+                </div>
             </div>
-        </div>
-        <div class="command hidden">
-            <h2>Cartões de Movimento</h2>
-            <div id="card-options">
-                <button class="movement-card" data-direction="UP">⬆️ Cima</button>
-                <button class="movement-card" data-direction="RIGHT">➡️ Direita</button>
-                <button class="movement-card" data-direction="DOWN">⬇️ Baixo</button>
-                <button class="movement-card" data-direction="LEFT">⬅️ Esquerda</button>
+            <div class="command">
+                <h2>Cartões de Movimento</h2>
+                <div id="card-options">
+                    <button class="movement-card" data-direction="UP">⬆️ Cima</button>
+                    <button class="movement-card" data-direction="RIGHT">➡️ Direita</button>
+                    <button class="movement-card" data-direction="DOWN">⬇️ Baixo</button>
+                    <button class="movement-card" data-direction="LEFT">⬅️ Esquerda</button>
+                </div>
             </div>
         </div>
     </div>

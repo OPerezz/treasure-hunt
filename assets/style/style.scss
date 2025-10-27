@@ -1,7 +1,6 @@
 @font-face {
     font-family: "Pirata";
-    src: url("../fonts/MedievalSharp-Regular.ttf") format("truetype");
-    font-weight: 400;
+    src: url("../fonts/PirataOne-Regular.ttf") format("truetype");
     font-style: normal;
     font-display: swap;
 }
@@ -9,56 +8,144 @@
 @font-face {
     font-family: "Bitcount Grid Single", system-ui;
     src: url("../fonts/bitcount.ttf") format("truetype");
-    font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 
-$font-pirate: "Pirata";
-$font-bit: "Bitcount Grid Single";
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/roboto.ttf") format("truetype");
+    font-style: normal;
+    font-display: swap;
+}
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, b, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+$font-pirate: "Pirata", sans-serif;
+$font-bit: "Bitcount Grid Single";
+$font-Roboto: "Roboto";
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+b,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
 }
 body {
-	line-height: 1;
+    line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+    list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+    quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+    content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 body {
@@ -88,8 +175,8 @@ body {
         align-items: center;
     }
 
-    .hidden{
-        display:none;
+    .hidden {
+        display: none;
     }
 
     .titulo-jogo {
@@ -103,12 +190,56 @@ body {
             font-weight: bold;
         }
 
-        p{
-            font-family: $font-pirate ;
+        p {
+            font-family: $font-Roboto;
             font-size: 20px;
-            font-weight: bold;
+            font-weight: 500;
             text-align: center;
             max-width: 70%;
+        }
+
+        .close {
+            background-color: rgb(192, 167, 87);
+            font-family: $font-Roboto, sans-serif;
+            border: none;
+            border-radius: 10px;
+            font-weight: 500;
+            padding: 20px;
+            position: fixed;
+            right: 10%;
+            top: 10%;
+            cursor: pointer;
+
+            &::after {
+                display: block;
+                position: absolute;
+                content: "";
+                width: 0;
+                height: 0;
+                border-left: 28px solid transparent;
+                border-right: 28px solid transparent;
+                border-bottom: 40px solid rgb(192, 167, 87);
+                border-radius: 5px;
+                transform: rotate(90deg);
+                top: 15%;
+                left: 100%;
+
+                animation: continue 1s ease-in-out infinite;
+
+                @keyframes continue {
+                    0% {
+                        left: 100%;
+                    }
+
+                    50% {
+                        left: 105%;
+                    }
+
+                    0% {
+                        left: 100%;
+                    }
+                }
+            }
         }
 
         img {
@@ -131,7 +262,7 @@ body {
         }
     }
 
-    .papiro{
+    .papiro {
         max-width: 70%;
         height: 80%;
         background: url(../img/papiro.png);
@@ -139,51 +270,63 @@ body {
         background-repeat: no-repeat;
     }
 
-    .table {
-        width: 90%;
-        justify-content: flex-start;
-        gap: 30px;
-        border: 5px solid #a0522d;
-        border-radius: 10px;
-        padding: 10px;
-        background-color: #5f9ea0;
+    .container-table {
+        width: 100%;
 
-        #game-board {
-            display: grid;
-            grid-template-columns: repeat(10, 73px);
-            grid-template-rows: repeat(6, 73px);
-            border: 1px solid #004d40;
-            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
-        }
+        .titulo-jogo{
+            margin: 40px 0;
+            h1{
+                margin-top: 20px;
+            }
+        } 
+        
+        .table {
+            width: 90%;
+            margin: 0 auto;
+            justify-content: flex-start;
+            gap: 30px;
+            border: 5px solid #a0522d;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #5f9ea0;
 
-        .cell {
-            width: 73px;
-            height: 73px;
-            border: 1px dotted rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            box-sizing: border-box;
-            transition: background-color 0.3s;
-        }
+            #game-board {
+                display: grid;
+                grid-template-columns: repeat(10, 73px);
+                grid-template-rows: repeat(6, 73px);
+                border: 1px solid #004d40;
+                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+            }
 
-        .path {
-            background-color: #f8f8ff;
-        }
+            .cell {
+                width: 73px;
+                height: 73px;
+                border: 1px dotted rgba(0, 0, 0, 0.1);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20px;
+                box-sizing: border-box;
+                transition: background-color 0.3s;
+            }
 
-        .ship {
-            background-color: #ffcccb;
-        }
+            .path {
+                background-color: #f8f8ff;
+            }
 
-        .treasure {
-            background-color: #90ee90;
-        }
+            .ship {
+                background-color: #ffcccb;
+            }
 
-        #controls {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
+            .treasure {
+                background-color: #90ee90;
+            }
+
+            #controls {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
         }
     }
 

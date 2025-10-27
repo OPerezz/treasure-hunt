@@ -1,33 +1,35 @@
-// O TABULEIRO AGORA É 10x7 (GRID_COLS=10, GRID_ROWS=7)
+const closeButton = document.getElementById('close-button');
+const modalInfo = document.querySelector('.papiro');
+const tableGame = document.querySelector('.container-table');
+
+closeButton.addEventListener('click', function() {
+    modalInfo.classList.add('hidden')
+    tableGame.classList.remove('hidden')
+});
+
 
 // --- NOVAS CONSTANTES DE NÍVEIS ---
-const START_POS = { col: 0, row: 6 }; // Posição inicial do navio
-const FINAL_TREASURE_POS = { col: 9, row: 2 }; // Posição final (Tesouro)
+const START_POS = { col: 0, row: 6 }; 
+const FINAL_TREASURE_POS = { col: 9, row: 2 }; 
 
-// 3 NÍVEIS DE CAMINHO
 const LEVEL_PATHS = [
-    // Nível 1: De (0, 6) a (5, 5) - 6 passos
     ['RIGHT', 'RIGHT', 'UP', 'RIGHT', 'RIGHT', 'RIGHT'], 
     
-    // Nível 2: De (5, 5) a (2, 2) - 6 passos
     ['UP', 'UP', 'LEFT', 'UP', 'LEFT', 'LEFT'], 
     
-    // Nível 3 (Final): De (2, 2) a (9, 2) - 12 passos
     ['RIGHT', 'UP', 'RIGHT', 'RIGHT', 'DOWN', 'DOWN', 'DOWN', 'RIGHT', 'RIGHT', 'RIGHT', 'RIGHT', 'UP'] 
 ];
 
 const MINI_GAME_UNLOCK_POSITIONS = [
-    { col: 5, row: 5}, // Fim Nível 1
-    { col: 2, row: 2 }  // Fim Nível 2
+    { col: 5, row: 5}, 
+    { col: 2, row: 2 }  
 ];
 
-// --- NOVOS ELEMENTOS DO MAPA ---
 const KRAKEN_POSITIONS = [{ col: 7, row: 0 }];
 const ISLAND_POSITIONS = [{ col: 1, row: 1 }, { col: 8, row: 5 }];
 const DOLPHIN_POSITIONS = [{ col: 4, row: 0 }, { col: 9, row: 6 }];
 
 
-// --- VARIÁVEIS DE ESTADO ---
 let currentLevel = 0; 
 let pathCoordinates = [];
 let userSequence = [];
@@ -36,7 +38,6 @@ let isGameActive = true;
 
 const gameBoard = document.getElementById('game-board');
 const commandSequenceDiv = document.getElementById('command-sequence');
-// Mantemos a messageDiv para mensagens não-alert
 const messageDiv = document.getElementById('mensagem-jogo');
 
 
@@ -98,26 +99,23 @@ function drawGameBoard() {
                 cell.classList.add('path');
             }
 
-            // Marca Posições de Mini-Game (Chaves)
             const isMiniGameSpot = MINI_GAME_UNLOCK_POSITIONS.some((pos, index) => 
                 col === pos.col && row === pos.row
             );
 
             if (isMiniGameSpot) {
                 cell.classList.add('mini-game-spot'); 
-                cell.innerHTML = '🔑'; 
+                cell.innerHTML = '✕'; 
             }
             
-            // Marca Elementos Visuais
             if (KRAKEN_POSITIONS.some(pos => pos.col === col && pos.row === row)) {
-                cell.innerHTML = '🦑'; // Kraken
+                cell.innerHTML = '🦑';
             } else if (ISLAND_POSITIONS.some(pos => pos.col === col && pos.row === row)) {
-                cell.innerHTML = '🏝️'; // Ilha
+                cell.innerHTML = '🏝️'; 
             } else if (DOLPHIN_POSITIONS.some(pos => pos.col === col && pos.row === row)) {
-                cell.innerHTML = '🐬'; // Golfinho
+                cell.innerHTML = '🐬'; 
             }
 
-            // Só marca o Tesouro se for o ÚLTIMO NÍVEL
             const isFinalLevel = currentLevel === LEVEL_PATHS.length - 1;
             if (isFinalLevel && col === FINAL_TREASURE_POS.col && row === FINAL_TREASURE_POS.row) {
                 cell.classList.add('treasure');
