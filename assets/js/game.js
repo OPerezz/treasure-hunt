@@ -227,11 +227,6 @@ function advanceLevel() {
     resetGame(false);
 }
 
-
-/**
- * 💥 NOVO: Função para executar a sequência de movimentos de forma sequencial.
- * Assim, a execução para assim que um erro é detetado.
- */
 function runSequence() {
     if (!isGameActive || userSequence.length === 0) {
         alert('Por favor, adicione comandos antes de navegar.');
@@ -249,67 +244,58 @@ function runSequence() {
         'DOWN': { col: 0, row: 1 }
     };
 
-    // 🧠 Lógica Sequencial: Usa uma função recursiva ou loop para processar 
-    // um movimento por vez, com atraso.
     function executeMove(moveIndex) {
 
-        // 1. Condição de Paragem: Se todos os comandos foram executados
         if (moveIndex >= userSequence.length) {
 
-            // 2. Verifica se a sequência é muito curta (todos os movimentos foram corretos)
+           
             if (userSequence.length < requiredPath.length) {
                 handleGameOver(false, false, 'incomplete_path');
                 return;
             }
 
-            // 3. Verifica a posição final (se a sequência é do tamanho certo)
             const isFinalLevel = currentLevel === LEVEL_PATHS.length - 1;
 
             if (isFinalLevel) {
                 if (tempShipPos.col === FINAL_TREASURE_POS.col && tempShipPos.row === FINAL_TREASURE_POS.row) {
-                    handleGameOver(true, true); // Vitória Final
+                    handleGameOver(true, true); 
                 } else {
-                    handleGameOver(false, false, 'wrong_position'); // Posição Final Errada
+                    handleGameOver(false, false, 'wrong_position'); 
                 }
-            } else { // Não é o nível final (chegou ao ponto de mini-game?)
+            } else {
                 const expectedUnlockPos = MINI_GAME_UNLOCK_POSITIONS[currentLevel];
                 if (tempShipPos.col === expectedUnlockPos.col && tempShipPos.row === expectedUnlockPos.row) {
-                    // Confirma a posição para o próximo nível
+                   
                     currentShipPos = { ...tempShipPos };
                     startMiniGame();
                 } else {
-                    handleGameOver(false, false, 'wrong_position'); // Posição Mini-Game Errada
+                    handleGameOver(false, false, 'wrong_position'); 
                 }
             }
-            return; // Fim da execução
+            return; 
         }
 
         const move = userSequence[moveIndex];
         const requiredMove = requiredPath[moveIndex];
         const delta = moveMap[move];
 
-        // 4. Validação do Movimento
+       
         if (move !== requiredMove) {
-            // 🛑 ERRO: Move apenas uma última vez (para a posição de erro) e para a execução.
+          
             tempShipPos.col += delta.col;
             tempShipPos.row += delta.row;
             placeShip(tempShipPos.col, tempShipPos.row);
 
-            // Dá o alerta e reinicia o nível após o atraso.
             setTimeout(() => handleGameOver(false, false, 'wrong_move'), 500);
-            return; // 💥 Para a recursão/execução aqui!
+            return; 
         }
 
-        // 5. Movimento Correto: Atualiza a posição e o visual
         tempShipPos.col += delta.col;
         tempShipPos.row += delta.row;
         placeShip(tempShipPos.col, tempShipPos.row);
 
-        // 6. Próxima Etapa: Agenda o próximo movimento com um atraso
         setTimeout(() => executeMove(moveIndex + 1), 500);
     }
-
-    // Inicia a sequência de movimentos
     executeMove(0);
 }
 
@@ -335,13 +321,12 @@ function handleGameOver(isWin, isFinalGame, reason = 'unknown') {
             if (isFinalGame) {
                 resetGame(true);
             } else {
-                // Reverte para a posição inicial do nível
                 if (currentLevel === 0) {
                     currentShipPos = { ...START_POS };
                 } else {
                     currentShipPos = { ...MINI_GAME_UNLOCK_POSITIONS[currentLevel - 1] };
                 }
-                resetGame(false); // Reset de nível
+                resetGame(false); 
             }
         }, 3000);
     }
