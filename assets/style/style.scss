@@ -154,7 +154,7 @@ body {
     height: auto;
     display: flex;
     justify-content: center;
-    // background-image: url(../img/bg.png);
+    background-color: rgb(178, 218, 245);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -165,256 +165,380 @@ body {
         display: flex;
     }
 
-    .container {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 16/9;
-        background-color: rgb(178, 218, 245);
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-    }
-
     .hidden {
         display: none;
     }
 
-    .titulo-jogo {
+    h3 {
+        font-family: $font-pirate;
+        font-size: 30px;
+        text-align: center;
+        margin-top: 20px;
+        max-width: 100%;
+        margin-bottom: 50px;
+    }
+
+    h3 {
+        font-family: $font-pirate;
+        font-size: 30px;
+        text-align: left;
+        margin-top: 20px;
+        max-width: 100%;
+        margin-bottom: 50px;
+
+        &:nth-child(2) {
+            text-align: center;
+        }
+    }
+
+    .container {
+        width: 90%;
+        height: auto;
+        aspect-ratio: 16/8;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
 
-        h1 {
-            font-size: 40px;
-            font-family: $font-pirate;
-            font-weight: bold;
-        }
+        .titulo-jogo {
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
 
-        p {
-            font-family: $font-Roboto;
-            font-size: 20px;
-            font-weight: 500;
-            text-align: center;
-            max-width: 70%;
-        }
+            h1 {
+                font-size: 40px;
+                font-family: $font-pirate;
+                font-weight: bold;
+            }
 
-        .close {
-            background-color: rgb(192, 167, 87);
-            font-family: $font-Roboto, sans-serif;
-            border: none;
-            border-radius: 10px;
-            font-weight: 500;
-            padding: 20px;
-            position: fixed;
-            right: 10%;
-            top: 10%;
-            cursor: pointer;
+            img {
+                max-width: 100px;
+                animation: rotateNavio 1s ease-in-out infinite;
 
-            &::after {
-                display: block;
-                position: absolute;
-                content: "";
-                width: 0;
-                height: 0;
-                border-left: 28px solid transparent;
-                border-right: 28px solid transparent;
-                border-bottom: 40px solid rgb(192, 167, 87);
-                border-radius: 5px;
-                transform: rotate(90deg);
-                top: 15%;
-                left: 100%;
-
-                animation: continue 1s ease-in-out infinite;
-
-                @keyframes continue {
-                    0% {
-                        left: 100%;
-                    }
-
+                @keyframes rotateNavio {
                     50% {
-                        left: 105%;
+                        transform: rotate(5deg);
                     }
 
-                    0% {
+                    75% {
+                        transform: rotate(-5deg);
+                    }
+
+                    100% {
+                        transform: rotate(-0deg);
+                    }
+                }
+            }
+        }
+
+        .modal {
+            max-width: 50%;
+            height: auto;
+            background: url(../img/papiro.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            padding: 300px 10px;
+
+            .titulo-jogo {
+                p {
+                    font-family: $font-Roboto;
+                    font-size: 20px;
+                    font-weight: 500;
+                    text-align: center;
+                    max-width: 70%;
+                }
+
+                .close {
+                    background-color: rgb(192, 167, 87);
+                    font-family: $font-Roboto, sans-serif;
+                    border: none;
+                    border-radius: 10px;
+                    font-weight: 500;
+                    padding: 20px;
+                    position: fixed;
+                    right: 10%;
+                    top: 10%;
+                    cursor: pointer;
+
+                    &::after {
+                        display: block;
+                        position: absolute;
+                        content: "";
+                        width: 0;
+                        height: 0;
+                        border-left: 28px solid transparent;
+                        border-right: 28px solid transparent;
+                        border-bottom: 40px solid rgb(192, 167, 87);
+                        border-radius: 5px;
+                        transform: rotate(90deg);
+                        top: 15%;
                         left: 100%;
+
+                        animation: continue 1s ease-in-out infinite;
+
+                        @keyframes continue {
+                            0% {
+                                left: 100%;
+                            }
+
+                            50% {
+                                left: 105%;
+                            }
+
+                            0% {
+                                left: 100%;
+                            }
+                        }
                     }
                 }
             }
         }
 
-        img {
-            max-width: 100px;
-            animation: rotateNavio 1s ease-in-out infinite;
+        .container-table {
+            width: 100%;
+            height: 100%;
 
-            @keyframes rotateNavio {
-                50% {
-                    transform: rotate(5deg);
-                }
+            .titulo-jogo {
+                width: fit-content;
+                margin: 40px 0;
+                justify-content: flex-start;
+                align-items: flex-start;
 
-                75% {
-                    transform: rotate(-5deg);
-                }
-
-                100% {
-                    transform: rotate(-0deg);
+                h1 {
+                    margin-top: 20px;
                 }
             }
-        }
-    }
-
-    .papiro {
-        max-width: 70%;
-        height: 80%;
-        background: url(../img/papiro.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .container-table {
-        width: 100%;
-
-        .titulo-jogo{
-            margin: 40px 0;
-            h1{
-                margin-top: 20px;
-            }
-        } 
-        
-        .table {
-            width: 90%;
-            margin: 0 auto;
-            justify-content: flex-start;
-            gap: 30px;
-            border: 5px solid #a0522d;
-            border-radius: 10px;
-            padding: 10px;
-            background-color: #5f9ea0;
-
-            #game-board {
-                display: grid;
-                grid-template-columns: repeat(10, 73px);
-                grid-template-rows: repeat(6, 73px);
-                border: 1px solid #004d40;
-                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
-            }
-
-            .cell {
-                width: 73px;
-                height: 73px;
-                border: 1px dotted rgba(0, 0, 0, 0.1);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 20px;
-                box-sizing: border-box;
-                transition: background-color 0.3s;
-            }
-
-            .path {
-                background-color: #f8f8ff;
-            }
-
-            .ship {
-                background-color: #ffcccb;
-            }
-
-            .treasure {
-                background-color: #90ee90;
-            }
-
-            #controls {
-                display: flex;
-                flex-direction: column;
+            .content {
                 width: 100%;
+
+                .table {
+                    width: 100%;
+                    justify-content: space-around;
+                    gap: 30px;
+
+                    #game-board {
+                        display: grid;
+                        grid-template-columns: repeat(10, 73px);
+                        grid-template-rows: repeat(6, 73px);
+                        border: 1px solid #004d40;
+                        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+                        background-color: #032288;
+
+                        border-radius: 20px;
+                        overflow: hidden;
+                    }
+
+                    .cell {
+                        width: 73px;
+                        height: 73px;
+                        border: 2px dotted rgba(0, 0, 0, 0.1);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 20px;
+                        box-sizing: border-box;
+                        transition: background-color 0.3s;
+                    }
+
+                    .path {
+                        background-color: #f8f8ff;
+                    }
+
+                    .ship {
+                        background-color: #ffcccb;
+                    }
+
+                    .treasure {
+                        background-color: #90ee90;
+                    }
+                }
+
+                #controls {
+                    display: flex;
+                    flex-direction: column;
+                    width: 50%;
+
+                    .container-controls {
+                        justify-content: space-between;
+                        width: 100%;
+                        .command {
+                            #card-options {
+                                display: grid;
+                                grid-template-columns: 1fr 1fr 1fr 1fr;
+                                margin-top: 70px;
+                                gap: 10px;
+
+                                .movement-card {
+                                    background-color: #ffd700;
+                                    z-index: 2;
+                                    border: none;
+                                    border-radius: 10px;
+                                    width: 100px;
+                                    aspect-ratio: 5/6;
+                                    cursor: pointer;
+                                    font-weight: bold;
+                                    transition: background-color 0.1s;
+                                    position: relative;
+
+                                    &::after {
+                                        display: block;
+                                        position: absolute;
+                                        content: "";
+                                        background-color: #ffd700;
+                                        width: 30px;
+                                        height: 30px;
+                                        bottom: 95%;
+                                        transform: translateX(-50%);
+                                        border-radius: 50%;
+                                        z-index: 0;
+                                        left: 50%;
+                                    }
+                                    &::before {
+                                        display: block;
+                                        position: absolute;
+                                        content: "";
+                                        background-color: rgb(178, 218, 245);
+                                        width: 30px;
+                                        height: 30px;
+                                        bottom: -10%;
+                                        left: 50%;
+                                        transform: translateX(-50%);
+                                        border-radius: 50%;
+                                    }
+                                }
+
+                                .movement-card:hover {
+                                    background-color: #ffc72c;
+
+                                    &::after {
+                                        background-color: #ffc72c;
+                                    }
+                                }
+                            }
+                        }
+
+                        #action-buttons {
+                            width: 40%;
+                            align-self: flex-end;
+                            gap: 20px;
+
+                            .run,
+                            .stop {
+                                width: 100%;
+                                gap: 10px;
+                            }
+
+                            .stop{
+                                display: flex;
+                                flex-direction: column;
+                                gap: 10px;
+                            }
+
+                            #run-button {
+                                width: 100%;
+                                height: 100%;
+                                background-color: #008080;
+                                color: white;
+                                padding: 10px;
+                                font-size: 16px;
+                                border: none;
+                                border-radius: 5px;
+                                cursor: pointer;
+                                transition: background-color 0.2s;
+                            }
+
+                            #run-button:hover {
+                                background-color: #006666;
+                                
+                            }
+
+                            #clear-button,
+                            #reset-button {
+                                width: 100%;
+                                background-color: #e9967a;
+                                /* Cor de coral/areia */
+                                color: #333;
+                                padding: 8px;
+                                border: 1px solid #cc705b;
+                                border-radius: 5px;
+                                cursor: pointer;
+                            }
+
+                            #clear-button:hover,
+                            #reset-button:hover {
+                                background-color: #e08064;
+                            }
+                        }
+                    }
+
+                    .content-sequence {
+                        width: 100%;
+                        position: relative;
+
+                        #command-sequence {
+                            width: 100%;
+                            height: 100%;
+                            border: 2px solid #a0522d;
+                            border-radius: 20px;
+                            padding: 0 20px;
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            gap: 5px;
+                            background-color: #365057;
+
+                            .movement-card {
+                                width: 150px;
+                                background-color: #ffd700;
+                                border: 1px solid #0a0802;
+                                z-index: 2;
+                                border-radius: 10px;
+                                max-height: 100px;
+                                aspect-ratio: 5/6;
+                                cursor: pointer;
+                                font-weight: bold;
+                                transition: background-color 0.1s;
+                                position: relative;
+
+                                &::after {
+                                    display: block;
+                                    position: absolute;
+                                    content: "";
+                                    background-color: #365057;
+                                    width: 30px;
+                                    height: 30px;
+                                    left: 100%;
+                                    bottom: 50%;
+                                    transform: translate(-20%, 50%);
+                                    border-radius: 50%;
+                                    border-top-left-radius: 1px solid #0a0802;
+                                    border-top-right-radius: 1px solid #0a0802;
+                                    z-index: 2;
+                                }
+
+                                &::before {
+                                    display: block;
+                                    position: absolute;
+                                    content: "";
+                                    background-color: #ffd700;
+                                    width: 30px;
+                                    height: 30px;
+                                    bottom: 50%;
+                                    left: -5px;
+                                    transform: translate(-10%, 50%);
+                                    border-radius: 50%;
+                                    z-index: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .mini-game-spot {
+                    background-color: #ffdab9;
+                    border: 2px solid #a0522d;
+                }
             }
         }
-    }
-
-    h2 {
-        font-family: $font-pirate;
-    }
-
-    #card-options {
-        display: grid;
-        margin: 5px 0;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 10px;
-
-        .movement-card {
-            padding: 10px 5px;
-            background-color: #ffd700;
-            border: 2px solid #ccac00;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.1s;
-        }
-
-        .movement-card:hover {
-            background-color: #ffc72c;
-        }
-    }
-
-    #command-sequence {
-        min-height: 50%;
-        border: 2px dashed #a0522d;
-        padding: 10px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-        background-color: #fffaf0;
-    }
-
-    #command-sequence .movement-card {
-        padding: 5px;
-        height: fit-content;
-        border-radius: 5px;
-        font-size: 12px;
-        flex-grow: 0;
-    }
-
-    #action-buttons {
-        margin-top: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    #run-button {
-        background-color: #008080;
-        /* Teal - Cor de vela de navio */
-        color: white;
-        padding: 10px;
-        font-size: 16px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.2s;
-    }
-
-    #run-button:hover {
-        background-color: #006666;
-    }
-
-    #clear-button,
-    #reset-button {
-        background-color: #e9967a;
-        /* Cor de coral/areia */
-        color: #333;
-        padding: 8px;
-        border: 1px solid #cc705b;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .mini-game-spot {
-        background-color: #ffdab9;
-        /* Cor de destaque para o ponto de transição */
-        border: 2px solid #a0522d;
-    }
-
-    #clear-button:hover,
-    #reset-button:hover {
-        background-color: #e08064;
     }
 }

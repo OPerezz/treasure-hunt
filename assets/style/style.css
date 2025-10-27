@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @font-face {
   font-family: "Pirata";
   src: url("../fonts/PirataOne-Regular.ttf") format("truetype");
@@ -154,6 +153,7 @@ body {
   height: auto;
   display: flex;
   justify-content: center;
+  background-color: rgb(178, 218, 245);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -163,36 +163,78 @@ body {
 body .flex {
   display: flex;
 }
+body .hidden {
+  display: none;
+}
+body h3 {
+  font-family: "Pirata", sans-serif;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 20px;
+  max-width: 100%;
+  margin-bottom: 50px;
+}
+body h3 {
+  font-family: "Pirata", sans-serif;
+  font-size: 30px;
+  text-align: left;
+  margin-top: 20px;
+  max-width: 100%;
+  margin-bottom: 50px;
+}
+body h3:nth-child(2) {
+  text-align: center;
+}
 body .container {
-  width: 100%;
+  width: 90%;
   height: auto;
-  aspect-ratio: 16/9;
-  background-color: rgb(178, 218, 245);
+  aspect-ratio: 16/8;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }
-body .hidden {
-  display: none;
-}
-body .titulo-jogo {
+body .container .titulo-jogo {
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-body .titulo-jogo h1 {
+body .container .titulo-jogo h1 {
   font-size: 40px;
   font-family: "Pirata", sans-serif;
   font-weight: bold;
 }
-body .titulo-jogo p {
+body .container .titulo-jogo img {
+  max-width: 100px;
+  animation: rotateNavio 1s ease-in-out infinite;
+}
+@keyframes rotateNavio {
+  50% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+body .container .modal {
+  max-width: 50%;
+  height: auto;
+  background: url(../img/papiro.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 300px 10px;
+}
+body .container .modal .titulo-jogo p {
   font-family: "Roboto";
   font-size: 20px;
   font-weight: 500;
   text-align: center;
   max-width: 70%;
 }
-body .titulo-jogo .close {
+body .container .modal .titulo-jogo .close {
   background-color: rgb(192, 167, 87);
   font-family: "Roboto", sans-serif;
   border: none;
@@ -204,7 +246,7 @@ body .titulo-jogo .close {
   top: 10%;
   cursor: pointer;
 }
-body .titulo-jogo .close::after {
+body .container .modal .titulo-jogo .close::after {
   display: block;
   position: absolute;
   content: "";
@@ -230,58 +272,42 @@ body .titulo-jogo .close::after {
     left: 100%;
   }
 }
-body .titulo-jogo img {
-  max-width: 100px;
-  animation: rotateNavio 1s ease-in-out infinite;
-}
-@keyframes rotateNavio {
-  50% {
-    transform: rotate(5deg);
-  }
-  75% {
-    transform: rotate(-5deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-body .papiro {
-  max-width: 70%;
-  height: 80%;
-  background: url(../img/papiro.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-body .container-table {
+body .container .container-table {
   width: 100%;
+  height: 100%;
 }
-body .container-table .titulo-jogo {
+body .container .container-table .titulo-jogo {
+  width: -moz-fit-content;
+  width: fit-content;
   margin: 40px 0;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
-body .container-table .titulo-jogo h1 {
+body .container .container-table .titulo-jogo h1 {
   margin-top: 20px;
 }
-body .container-table .table {
-  width: 90%;
-  margin: 0 auto;
-  justify-content: flex-start;
-  gap: 30px;
-  border: 5px solid #a0522d;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: #5f9ea0;
+body .container .container-table .content {
+  width: 100%;
 }
-body .container-table .table #game-board {
+body .container .container-table .content .table {
+  width: 100%;
+  justify-content: space-around;
+  gap: 30px;
+}
+body .container .container-table .content .table #game-board {
   display: grid;
   grid-template-columns: repeat(10, 73px);
   grid-template-rows: repeat(6, 73px);
   border: 1px solid #004d40;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #032288;
+  border-radius: 20px;
+  overflow: hidden;
 }
-body .container-table .table .cell {
+body .container .container-table .content .table .cell {
   width: 73px;
   height: 73px;
-  border: 1px dotted rgba(0, 0, 0, 0.1);
+  border: 2px dotted rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -289,67 +315,92 @@ body .container-table .table .cell {
   box-sizing: border-box;
   transition: background-color 0.3s;
 }
-body .container-table .table .path {
+body .container .container-table .content .table .path {
   background-color: #f8f8ff;
 }
-body .container-table .table .ship {
+body .container .container-table .content .table .ship {
   background-color: #ffcccb;
 }
-body .container-table .table .treasure {
+body .container .container-table .content .table .treasure {
   background-color: #90ee90;
 }
-body .container-table .table #controls {
+body .container .container-table .content #controls {
   display: flex;
   flex-direction: column;
+  width: 50%;
+}
+body .container .container-table .content #controls .container-controls {
+  justify-content: space-between;
   width: 100%;
 }
-body h2 {
-  font-family: "Pirata", sans-serif;
-}
-body #card-options {
+body .container .container-table .content #controls .container-controls .command #card-options {
   display: grid;
-  margin: 5px 0;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top: 70px;
   gap: 10px;
 }
-body #card-options .movement-card {
-  padding: 10px 5px;
+body .container .container-table .content #controls .container-controls .command #card-options .movement-card {
   background-color: #ffd700;
-  border: 2px solid #ccac00;
-  border-radius: 5px;
+  z-index: 2;
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+  aspect-ratio: 5/6;
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.1s;
+  position: relative;
 }
-body #card-options .movement-card:hover {
+body .container .container-table .content #controls .container-controls .command #card-options .movement-card::after {
+  display: block;
+  position: absolute;
+  content: "";
+  background-color: #ffd700;
+  width: 30px;
+  height: 30px;
+  bottom: 95%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  z-index: 0;
+  left: 50%;
+}
+body .container .container-table .content #controls .container-controls .command #card-options .movement-card::before {
+  display: block;
+  position: absolute;
+  content: "";
+  background-color: rgb(178, 218, 245);
+  width: 30px;
+  height: 30px;
+  bottom: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+}
+body .container .container-table .content #controls .container-controls .command #card-options .movement-card:hover {
   background-color: #ffc72c;
 }
-body #command-sequence {
-  min-height: 50%;
-  border: 2px dashed #a0522d;
-  padding: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  background-color: #fffaf0;
+body .container .container-table .content #controls .container-controls .command #card-options .movement-card:hover::after {
+  background-color: #ffc72c;
 }
-body #command-sequence .movement-card {
-  padding: 5px;
-  height: -moz-fit-content;
-  height: fit-content;
-  border-radius: 5px;
-  font-size: 12px;
-  flex-grow: 0;
+body .container .container-table .content #controls .container-controls #action-buttons {
+  width: 40%;
+  align-self: flex-end;
+  gap: 20px;
 }
-body #action-buttons {
-  margin-top: 20px;
+body .container .container-table .content #controls .container-controls #action-buttons .run,
+body .container .container-table .content #controls .container-controls #action-buttons .stop {
+  width: 100%;
+  gap: 10px;
+}
+body .container .container-table .content #controls .container-controls #action-buttons .stop {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-body #run-button {
+body .container .container-table .content #controls .container-controls #action-buttons #run-button {
+  width: 100%;
+  height: 100%;
   background-color: #008080;
-  /* Teal - Cor de vela de navio */
   color: white;
   padding: 10px;
   font-size: 16px;
@@ -358,11 +409,12 @@ body #run-button {
   cursor: pointer;
   transition: background-color 0.2s;
 }
-body #run-button:hover {
+body .container .container-table .content #controls .container-controls #action-buttons #run-button:hover {
   background-color: #006666;
 }
-body #clear-button,
-body #reset-button {
+body .container .container-table .content #controls .container-controls #action-buttons #clear-button,
+body .container .container-table .content #controls .container-controls #action-buttons #reset-button {
+  width: 100%;
   background-color: #e9967a;
   /* Cor de coral/areia */
   color: #333;
@@ -371,12 +423,68 @@ body #reset-button {
   border-radius: 5px;
   cursor: pointer;
 }
-body .mini-game-spot {
-  background-color: #ffdab9;
-  /* Cor de destaque para o ponto de transição */
-  border: 2px solid #a0522d;
-}
-body #clear-button:hover,
-body #reset-button:hover {
+body .container .container-table .content #controls .container-controls #action-buttons #clear-button:hover,
+body .container .container-table .content #controls .container-controls #action-buttons #reset-button:hover {
   background-color: #e08064;
+}
+body .container .container-table .content #controls .content-sequence {
+  width: 100%;
+  position: relative;
+}
+body .container .container-table .content #controls .content-sequence #command-sequence {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #a0522d;
+  border-radius: 20px;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  background-color: #365057;
+}
+body .container .container-table .content #controls .content-sequence #command-sequence .movement-card {
+  width: 150px;
+  background-color: #ffd700;
+  border: 1px solid #0a0802;
+  z-index: 2;
+  border-radius: 10px;
+  max-height: 100px;
+  aspect-ratio: 5/6;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.1s;
+  position: relative;
+}
+body .container .container-table .content #controls .content-sequence #command-sequence .movement-card::after {
+  display: block;
+  position: absolute;
+  content: "";
+  background-color: #365057;
+  width: 30px;
+  height: 30px;
+  left: 100%;
+  bottom: 50%;
+  transform: translate(-20%, 50%);
+  border-radius: 50%;
+  border-top-left-radius: 1px solid #0a0802;
+  border-top-right-radius: 1px solid #0a0802;
+  z-index: 2;
+}
+body .container .container-table .content #controls .content-sequence #command-sequence .movement-card::before {
+  display: block;
+  position: absolute;
+  content: "";
+  background-color: #ffd700;
+  width: 30px;
+  height: 30px;
+  bottom: 50%;
+  left: -5px;
+  transform: translate(-10%, 50%);
+  border-radius: 50%;
+  z-index: 1;
+}
+body .container .container-table .content .mini-game-spot {
+  background-color: #ffdab9;
+  border: 2px solid #a0522d;
 }/*# sourceMappingURL=style.css.map */
