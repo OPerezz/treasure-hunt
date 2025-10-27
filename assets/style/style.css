@@ -1,0 +1,249 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Pirata";
+  src: url("../fonts/MedievalSharp-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bitcount Grid Single", system-ui;
+  src: url("../fonts/bitcount.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, b, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+body .flex {
+  display: flex;
+}
+body .container {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  background-color: rgb(178, 218, 245);
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+body .hidden {
+  display: none;
+}
+body .titulo-jogo {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body .titulo-jogo h1 {
+  font-size: 40px;
+  font-family: "Pirata";
+  font-weight: bold;
+}
+body .titulo-jogo p {
+  font-family: "Pirata";
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  max-width: 70%;
+}
+body .titulo-jogo img {
+  max-width: 100px;
+  animation: rotateNavio 1s ease-in-out infinite;
+}
+@keyframes rotateNavio {
+  50% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+body .papiro {
+  max-width: 70%;
+  height: 80%;
+  background: url(../img/papiro.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+body .table {
+  width: 90%;
+  justify-content: flex-start;
+  gap: 30px;
+  border: 5px solid #a0522d;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #5f9ea0;
+}
+body .table #game-board {
+  display: grid;
+  grid-template-columns: repeat(10, 73px);
+  grid-template-rows: repeat(6, 73px);
+  border: 1px solid #004d40;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+body .table .cell {
+  width: 73px;
+  height: 73px;
+  border: 1px dotted rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  box-sizing: border-box;
+  transition: background-color 0.3s;
+}
+body .table .path {
+  background-color: #f8f8ff;
+}
+body .table .ship {
+  background-color: #ffcccb;
+}
+body .table .treasure {
+  background-color: #90ee90;
+}
+body .table #controls {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+body h2 {
+  font-family: "Pirata";
+}
+body #card-options {
+  display: grid;
+  margin: 5px 0;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+body #card-options .movement-card {
+  padding: 10px 5px;
+  background-color: #ffd700;
+  border: 2px solid #ccac00;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.1s;
+}
+body #card-options .movement-card:hover {
+  background-color: #ffc72c;
+}
+body #command-sequence {
+  min-height: 50%;
+  border: 2px dashed #a0522d;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  background-color: #fffaf0;
+}
+body #command-sequence .movement-card {
+  padding: 5px;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 5px;
+  font-size: 12px;
+  flex-grow: 0;
+}
+body #action-buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+body #run-button {
+  background-color: #008080;
+  /* Teal - Cor de vela de navio */
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+body #run-button:hover {
+  background-color: #006666;
+}
+body #clear-button,
+body #reset-button {
+  background-color: #e9967a;
+  /* Cor de coral/areia */
+  color: #333;
+  padding: 8px;
+  border: 1px solid #cc705b;
+  border-radius: 5px;
+  cursor: pointer;
+}
+body .mini-game-spot {
+  background-color: #ffdab9;
+  /* Cor de destaque para o ponto de transição */
+  border: 2px solid #a0522d;
+}
+body #clear-button:hover,
+body #reset-button:hover {
+  background-color: #e08064;
+}/*# sourceMappingURL=style.css.map */

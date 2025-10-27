@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/style/style.css">
+</head>
+
+<body class="flex">
+    <div class="container flex">
+        <div style="max-width: 50%; height: 1400px;" class="titulo-jogo papiro flex">
+            <img style="margin-top: 100px;" src="assets/img/navio-pirata.png" alt="Navio Pirata">
+            <h1 style="margin-bottom: 50px;">A Busca pelo Tesouro Perdido</h1>
+            <p class="descritivo">
+                Ahoy, Marujos Corajosos!<br><br>
+
+                Bem-vindos ao "A Busca pelo Tesouro Perdido", onde o teu raciocínio é o único mapa capaz de te guiar
+                através das traiçoeiras águas do Caribe.<br><br>
+
+                Tu és o capitão do lendário Vingança dos Mares, e nas tuas mãos tens o fragmento de um pergaminho
+                antigo, a chave para encontrar o incalculável tesouro do infame pirata Barba Negra. Mas a glória não
+                será conquistada facilmente.<br><br>
+
+                A Missão em Três Etapas
+                A rota para a Ilha do Esqueleto está dividida em três desafios épicos, ocultos por uma magia
+                ancestral:<br>
+
+                A Costa da Programação (Nível 1): Começas nas margens conhecidas. Tens de programar o teu navio com a
+                sequência exata de movimentos (Cima, Baixo, Esquerda, Direita) para cruzar o primeiro labirinto de
+                recifes. Cada erro é um encalhe em águas rasas, forçando-te a recomeçar a rota.<br><br>
+
+                O Desafio do Guardião (Mini-Game): Ao final de cada percurso, a chave para o próximo mapa está selada
+                por um enigma. Terás de desvendar quebra-cabeças e testar a tua inteligência em mini-games de
+                raciocínio. Só a vitória liberta o caminho e revela as coordenadas seguintes!<br><br>
+
+                A Rota Final (Níveis 2 e 3): Com a nova rota desbloqueada, enfrentarás mares mais perigosos, patrulhados
+                por navios fantasmas e, reza a lenda, pelo mítico Kraken 🦑. Usa a lógica e o teu código para navegar
+                por entre ilhas 🏝️ e a companhia de golfinhos 🐬, traçando o caminho perfeito para a glória.<br><br>
+
+                Usa a Lógica e Conquista a Glória!
+                A sequência de comandos é o teu programa, o teu destino é o Tesouro de Barba Negra 👑. Cada clique é uma
+                ordem, cada erro é uma lição.<br><br>
+
+                Inicia a tua jornada, desvenda os segredos e encontra o lendário Tesouro Perdido!</p>
+        </div>
+
+        <div class="table hidden">
+            <div class="titulo-jogo flex">
+                <img src="assets/img/navio-pirata.png" alt="Navio Pirata">
+                <h1>A Busca pelo Tesouro Perdido</h1>
+            </div>
+            <div id="game-board">
+            </div>
+
+            <div id="controls">
+
+                <h2>Itinerário Maritímo (Sequencia)</h2>
+                <div id="command-sequence">
+                </div>
+
+                <div id="action-buttons">
+                    <button id="run-button">⚓ Navegar</button>
+                    <button id="clear-button">❌ Limpar Sequência</button>
+                    <button id="reset-button">🔄 Reiniciar Jogo</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="command hidden">
+            <h2>Cartões de Movimento</h2>
+            <div id="card-options">
+                <button class="movement-card" data-direction="UP">⬆️ Cima</button>
+                <button class="movement-card" data-direction="RIGHT">➡️ Direita</button>
+                <button class="movement-card" data-direction="DOWN">⬇️ Baixo</button>
+                <button class="movement-card" data-direction="LEFT">⬅️ Esquerda</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="assets/js/main.js"></script>
+
+</html>
