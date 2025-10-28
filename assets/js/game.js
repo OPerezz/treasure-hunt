@@ -1,4 +1,4 @@
-
+import { CorridaMatematica } from './minigame1.js';
 
 // --- NOVAS CONSTANTES DE NÍVEIS ---
 
@@ -41,7 +41,7 @@ const GRID_COLS = 10;
 const GRID_ROWS = 8;
 
 // ----------------------------------------------------------------------
-// FUNÇÕES UTILITÁRIAS (mantidas)
+// FUNÇÕES UTILITÁRIAS
 // ----------------------------------------------------------------------
 
 function getCellIndex(col, row) {
@@ -77,7 +77,7 @@ function generatePathCoordinates() {
 }
 
 // ----------------------------------------------------------------------
-// FUNÇÕES PRINCIPAIS DO JOGO (mantidas)
+// FUNÇÕES PRINCIPAIS DO JOGO
 // ----------------------------------------------------------------------
 
 function drawGameBoard() {
@@ -191,7 +191,7 @@ function clearSequence() {
 }
 
 // ----------------------------------------------------------------------
-// LÓGICA DE NÍVEIS E MINI-GAME (mantidas)
+// LÓGICA DE NÍVEIS E MINI-GAME
 // ----------------------------------------------------------------------
 
 function loadMiniGameScript(levelIndex) {
@@ -396,5 +396,3 @@ function initGame() {
 }
 
 initGame();
-
-import { CorridaMatematica } from './minigame1.js';

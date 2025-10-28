@@ -6,7 +6,7 @@ export class CorridaMatematica {
         this.jogoAcabou = false;
         this.respostaCorreta = 0;
         this.frameCount = 0; // Contador para controlar velocidade
-        this.framesPorMovimento = 100; // Mover tela a cada 6 frames (~10 FPS)
+        this.framesPorMovimento = 10; // Velocidade do mar (quanto maior o número, mais devagar ele anda)
 
         // Elementos do DOM
         this.canvas = document.getElementById('gameCanvas');
@@ -80,16 +80,16 @@ export class CorridaMatematica {
             if (isNaN(respostaJogador)) throw new Error('Entrada inválida');
 
             if (respostaJogador === this.respostaCorreta) {
-                this.posicaoJogador += 100;
+                this.posicaoJogador += 50;
                 this.feedbackLabel.textContent = 'Correto! Lesgoo!';
                 this.feedbackLabel.style.color = '#009900'; // Verde
             } else {
-                this.posicaoJogador -= 10;
+                this.posicaoJogador -= 15;
                 this.feedbackLabel.textContent = `Errado! A resposta era ${this.respostaCorreta}`;
                 this.feedbackLabel.style.color = '#FF0000'; // Vermelho
             }
 
-            // Verificar vitória (ajustado para tamanho do barco/retângulo)
+            // Verificar vitória
             if (this.posicaoJogador >= this.canvas.width - 32) {
                 this.jogoAcabou = true;
                 this.feedbackLabel.textContent = 'VITÓRIA!';
@@ -104,6 +104,9 @@ export class CorridaMatematica {
 
                 miniGameCorrida.classList.add("hidden")
                 GamePrincipal.classList.remove("hidden")
+
+                //FUNCAO PARA PASSAR PASSAR O RETORNO DO JOGO E AVANÇAR O NIVEL
+                window.handleMiniGameComplete();
             }
         } catch (e) {
             this.feedbackLabel.textContent = 'Inválido. Ficou no mesmo lugar.';
