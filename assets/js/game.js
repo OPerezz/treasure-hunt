@@ -1,6 +1,10 @@
 
 
 // --- NOVAS CONSTANTES DE NÍVEIS ---
+
+const miniGameCorrida = document.getElementById("modal-minigame");
+const GamePrincipal = document.getElementById("game-principal");
+
 const START_POS = { col: 0, row: 6 };
 const FINAL_TREASURE_POS = { col: 9, row: 2 };
 
@@ -192,15 +196,16 @@ function clearSequence() {
 
 function loadMiniGameScript(levelIndex) {
     isGameActive = false;
-    gameBoard.style.opacity = 0.5;
+    // gameBoard.style.opacity = 0.5;
 
     alert(`MINI-GAME DESBLOQUEADO! Jogue o Mini-Game ${levelIndex + 1} para desbloquear a próxima rota!`);
+    if (currentLevel == 0) {
+        GamePrincipal.classList.add("hidden")
+        miniGameCorrida.classList.remove("hidden");
 
-    const script = document.createElement('script');
-    script.src = `assets/js/minigame_${levelIndex + 1}.js`;
-    script.id = 'minigame-script';
-
-    document.body.appendChild(script);
+        const corrida = new CorridaMatematica();
+        corrida.startGame();
+    }
 }
 
 window.handleMiniGameComplete = function () {
@@ -248,7 +253,7 @@ function runSequence() {
 
         if (moveIndex >= userSequence.length) {
 
-           
+
             if (userSequence.length < requiredPath.length) {
                 handleGameOver(false, false, 'incomplete_path');
                 return;
@@ -258,36 +263,36 @@ function runSequence() {
 
             if (isFinalLevel) {
                 if (tempShipPos.col === FINAL_TREASURE_POS.col && tempShipPos.row === FINAL_TREASURE_POS.row) {
-                    handleGameOver(true, true); 
+                    handleGameOver(true, true);
                 } else {
-                    handleGameOver(false, false, 'wrong_position'); 
+                    handleGameOver(false, false, 'wrong_position');
                 }
             } else {
                 const expectedUnlockPos = MINI_GAME_UNLOCK_POSITIONS[currentLevel];
                 if (tempShipPos.col === expectedUnlockPos.col && tempShipPos.row === expectedUnlockPos.row) {
-                   
+
                     currentShipPos = { ...tempShipPos };
                     startMiniGame();
                 } else {
-                    handleGameOver(false, false, 'wrong_position'); 
+                    handleGameOver(false, false, 'wrong_position');
                 }
             }
-            return; 
+            return;
         }
 
         const move = userSequence[moveIndex];
         const requiredMove = requiredPath[moveIndex];
         const delta = moveMap[move];
 
-       
+
         if (move !== requiredMove) {
-          
+
             tempShipPos.col += delta.col;
             tempShipPos.row += delta.row;
             placeShip(tempShipPos.col, tempShipPos.row);
 
             setTimeout(() => handleGameOver(false, false, 'wrong_move'), 500);
-            return; 
+            return;
         }
 
         tempShipPos.col += delta.col;
@@ -326,7 +331,7 @@ function handleGameOver(isWin, isFinalGame, reason = 'unknown') {
                 } else {
                     currentShipPos = { ...MINI_GAME_UNLOCK_POSITIONS[currentLevel - 1] };
                 }
-                resetGame(false); 
+                resetGame(false);
             }
         }, 3000);
     }
@@ -391,3 +396,5 @@ function initGame() {
 }
 
 initGame();
+
+import { CorridaMatematica } from './minigame1.js';

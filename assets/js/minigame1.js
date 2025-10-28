@@ -1,4 +1,4 @@
-class CorridaMatematica {
+export class CorridaMatematica {
     constructor() {
         // Variáveis de estado do jogo
         this.posicaoJogador = 80;
@@ -6,7 +6,7 @@ class CorridaMatematica {
         this.jogoAcabou = false;
         this.respostaCorreta = 0;
         this.frameCount = 0; // Contador para controlar velocidade
-        this.framesPorMovimento = 6; // Mover tela a cada 6 frames (~10 FPS)
+        this.framesPorMovimento = 100; // Mover tela a cada 6 frames (~10 FPS)
 
         // Elementos do DOM
         this.canvas = document.getElementById('gameCanvas');
@@ -16,14 +16,11 @@ class CorridaMatematica {
         this.feedbackLabel = document.getElementById('feedbackLabel');
         this.resetButton = document.getElementById('resetButton'); // Botão reset
 
-        // Carregar a imagem do barco (opcional)
         this.boatImage = new Image();
-        this.boatImage.src = 'boat.png';
+        this.boatImage.src = 'assets/img/boat.png';
 
-        // Iniciar o jogo imediatamente
         this.startGame();
 
-        // Configurar evento de input
         this.answerInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter' && !this.jogoAcabou) {
                 this.verificarResposta();
@@ -83,7 +80,7 @@ class CorridaMatematica {
             if (isNaN(respostaJogador)) throw new Error('Entrada inválida');
 
             if (respostaJogador === this.respostaCorreta) {
-                this.posicaoJogador += 20;
+                this.posicaoJogador += 100;
                 this.feedbackLabel.textContent = 'Correto! Lesgoo!';
                 this.feedbackLabel.style.color = '#009900'; // Verde
             } else {
@@ -101,6 +98,12 @@ class CorridaMatematica {
                 this.answerInput.disabled = true;
                 this.resetButton.style.display = 'inline'; // Mostrar botão reset
                 alert('Conseguiu chegar ao final!');
+
+                const miniGameCorrida = document.getElementById("modal-minigame");
+                const GamePrincipal = document.getElementById("game-principal");
+
+                miniGameCorrida.classList.add("hidden")
+                GamePrincipal.classList.remove("hidden")
             }
         } catch (e) {
             this.feedbackLabel.textContent = 'Inválido. Ficou no mesmo lugar.';
@@ -155,8 +158,3 @@ class CorridaMatematica {
         }
     }
 }
-
-// Iniciar o jogo quando a página carregar
-window.onload = () => {
-    new CorridaMatematica();
-};

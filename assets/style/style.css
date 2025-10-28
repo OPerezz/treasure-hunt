@@ -149,8 +149,9 @@ table {
 
 body {
   overflow-x: hidden;
+  position: relative;
   width: 100%;
-  height: auto;
+  height: 100vh;
   display: flex;
   justify-content: center;
   background-color: rgb(178, 218, 245);
@@ -456,35 +457,27 @@ body .container .container-table .content #controls .content-sequence #command-s
   transition: background-color 0.1s;
   position: relative;
 }
-body .container .container-table .content #controls .content-sequence #command-sequence .movement-card::after {
-  display: block;
-  position: absolute;
-  content: "";
-  background-color: #365057;
-  width: 30px;
-  height: 30px;
-  left: 100%;
-  bottom: 50%;
-  transform: translate(-20%, 50%);
-  border-radius: 50%;
-  border-top-left-radius: 1px solid #0a0802;
-  border-top-right-radius: 1px solid #0a0802;
-  z-index: 2;
-}
 body .container .container-table .content #controls .content-sequence #command-sequence .movement-card::before {
   display: block;
   position: absolute;
   content: "";
-  background-color: #ffd700;
+  background-color: blue;
   width: 30px;
   height: 30px;
   bottom: 50%;
-  left: -5px;
+  left: -18px;
   transform: translate(-10%, 50%);
   border-radius: 50%;
-  z-index: 1;
+  z-index: 2;
+}
+body .container .container-table .content #controls .content-sequence #command-sequence .movement-card:first-child::before {
+  content: none;
 }
 body .container .container-table .content .mini-game-spot {
   background-color: #ffdab9;
   border: 2px solid #a0522d;
+}
+body .modal-minigame {
+  position: absolute;
+  top: 50%;
 }/*# sourceMappingURL=style.css.map */

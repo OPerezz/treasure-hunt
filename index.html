@@ -9,13 +9,6 @@
     <link rel="stylesheet" href="assets/style/style.css">
 
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
         #gameCanvas {
             border: 1px solid black;
             background: white;
@@ -54,8 +47,8 @@
 </head>
 
 <body class="flex">
-    <div class="container flex">
-        <div class="modal papiro">
+    <div id="game-principal" class="container flex">
+        <div class="modal papiro ">
             <div class="titulo-jogo flex">
                 <img src="assets/img/navio-pirata.png" alt="Navio Pirata">
                 <h1 style="margin-bottom: 50px;">A Busca pelo Tesouro Perdido</h1>
@@ -142,16 +135,15 @@
 
                 </div>
             </div>
-
         </div>
     </div>
-    <div>
+    <div id="modal-minigame" class="modal-minigame hidden">
         <canvas id="gameCanvas" width="800" height="300"></canvas>
         <div id="controlPanel">
             <span id="questionLabel">Pergunta aparecerá aqui</span>
             <input type="text" id="answerInput" placeholder="Resposta">
             <span id="feedbackLabel">Digite a resposta e aperte Enter.</span>
-            <button id="resetButton">🔄 JOGAR NOVAMENTE</button>
+            <button id="resetButton"> JOGAR NOVAMENTE</button>
         </div>
 
     </div>
@@ -160,6 +152,6 @@
 </body>
 
 <script src="assets/js/main.js"></script>
-<script src="assets/js/game.js"></script>
-<script src="assets/js/minigame1.js"></script>
+<script type="module" src="assets/js/minigame1.js"></script>
+<script type="module" src="assets/js/game.js"></script>
 </html>
