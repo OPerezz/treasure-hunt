@@ -7,6 +7,50 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="assets/style/style.css">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #gameCanvas {
+            border: 1px solid black;
+            background: white;
+        }
+        #controlPanel {
+            margin-top: 10px;
+            text-align: center;
+        }
+        #answerInput {
+            padding: 8px;
+            margin: 0 10px;
+            width: 100px;
+            font-size: 16px;
+        }
+        #feedbackLabel {
+            color: black;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+        #resetButton {
+            padding: 8px 16px;
+            font-size: 16px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: none; /* Escondido no início */
+            margin-left: 10px;
+        }
+        #resetButton:hover {
+            background: #45a049;
+        }
+    </style>
+
 </head>
 
 <body class="flex">
@@ -101,9 +145,21 @@
 
         </div>
     </div>
+    <div>
+        <canvas id="gameCanvas" width="800" height="300"></canvas>
+        <div id="controlPanel">
+            <span id="questionLabel">Pergunta aparecerá aqui</span>
+            <input type="text" id="answerInput" placeholder="Resposta">
+            <span id="feedbackLabel">Digite a resposta e aperte Enter.</span>
+            <button id="resetButton">🔄 JOGAR NOVAMENTE</button>
+        </div>
+
+    </div>
+
+
 </body>
 
 <script src="assets/js/main.js"></script>
 <script src="assets/js/game.js"></script>
-
+<script src="assets/js/minigame1.js"></script>
 </html>
