@@ -324,6 +324,9 @@ function handleGameOver(isWin, isFinalGame, reason = 'unknown') {
 
     if (isWin) {
         alert("🎉 Tesouro Encontrado! Você é um Mestre Navegador!");
+        setTimeout(() => {
+            location.reload();
+        }, 5000); //a cada 1000 é um 1s
     } else {
         let msg = '';
         if (reason === 'incomplete_path') {
