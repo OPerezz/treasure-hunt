@@ -1,12 +1,14 @@
 import { CorridaMatematica } from './minigame1.js';
+import { EnigmaDoGuardião } from './minigame2.js';
 
 // --- NOVAS CONSTANTES DE NÍVEIS ---
 
 const miniGameCorrida = document.getElementById("modal-minigame");
+const miniGameEnigma = document.getElementById("modal-minigame2");
 const GamePrincipal = document.getElementById("game-principal");
 
 const START_POS = { col: 0, row: 6 };
-const FINAL_TREASURE_POS = { col: 9, row: 2 };
+const FINAL_TREASURE_POS = { col: 9, row: 3};
 
 const LEVEL_PATHS = [
     ['RIGHT', 'RIGHT', 'UP', 'RIGHT', 'RIGHT', 'RIGHT'],
@@ -95,21 +97,23 @@ function drawGameBoard() {
                 cell.classList.add('path');
             }
 
-            const isMiniGameSpot = MINI_GAME_UNLOCK_POSITIONS.some((pos, index) =>
-                col === pos.col && row === pos.row
+            const miniGameSpotIndex = MINI_GAME_UNLOCK_POSITIONS.findIndex(pos =>
+                pos.col === col && pos.row === row
             );
 
-            if (isMiniGameSpot) {
-                cell.classList.add('mini-game-spot');
-                cell.innerHTML = '✕';
+            if (miniGameSpotIndex !== -1) {
+                if (miniGameSpotIndex === currentLevel) {
+                    cell.classList.add('mini-game-spot');
+                    cell.innerHTML = '✕';
+                }
             }
 
             if (KRAKEN_POSITIONS.some(pos => pos.col === col && pos.row === row)) {
-                cell.innerHTML = '🦑';
+                            cell.innerHTML = '🦑';
             } else if (ISLAND_POSITIONS.some(pos => pos.col === col && pos.row === row)) {
-                cell.innerHTML = '🏝️';
+                            cell.innerHTML = '🏝️';
             } else if (DOLPHIN_POSITIONS.some(pos => pos.col === col && pos.row === row)) {
-                cell.innerHTML = '🐬';
+                            cell.innerHTML = '🐬';
             }
 
             const isFinalLevel = currentLevel === LEVEL_PATHS.length - 1;
@@ -118,13 +122,16 @@ function drawGameBoard() {
                 cell.innerHTML = '👑';
                 cell.classList.remove('mini-game-spot');
             }
+                gameBoard.appendChild(cell);
 
-            gameBoard.appendChild(cell);
         }
+
+        }
+
+        placeShip(currentShipPos.col, currentShipPos.row);
     }
 
-    placeShip(currentShipPos.col, currentShipPos.row);
-}
+
 
 function placeShip(newCol, newRow) {
     const oldShipCell = getCellElement(currentShipPos.col, currentShipPos.row);
@@ -205,6 +212,13 @@ function loadMiniGameScript(levelIndex) {
 
         const corrida = new CorridaMatematica();
         corrida.startGame();
+
+    } else if (currentLevel == 1){
+    GamePrincipal.classList.add("hidden");
+    miniGameEnigma.classList.remove("hidden");
+
+    const enigma = new EnigmaDoGuardião();
+    enigma.startGame();
     }
 }
 
