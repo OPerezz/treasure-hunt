@@ -1,5 +1,4 @@
 import { CorridaMatematica } from './minigame1.js';
-import { EnigmaDoGuardião } from './minigame2.js';
 
 // --- NOVAS CONSTANTES DE NÍVEIS ---
 

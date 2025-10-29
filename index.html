@@ -8,26 +8,31 @@
 
     <link rel="stylesheet" href="assets/style/style.css">
 
+
     <style>
         #gameCanvas {
             border: 1px solid black;
             background: white;
         }
+
         #controlPanel {
             margin-top: 10px;
             text-align: center;
         }
+
         #answerInput {
             padding: 8px;
             margin: 0 10px;
             width: 100px;
             font-size: 16px;
         }
+
         #feedbackLabel {
             color: black;
             font-weight: bold;
             margin: 0 10px;
         }
+
         #resetButton {
             padding: 8px 16px;
             font-size: 16px;
@@ -36,14 +41,15 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            display: none; /* Escondido no início */
+            display: none;
+            /* Escondido no início */
             margin-left: 10px;
         }
+
         #resetButton:hover {
             background: #45a049;
         }
     </style>
-
 </head>
 
 <body class="flex">
@@ -148,21 +154,30 @@
     </div>
 
     <div id="modal-minigame2" class="modal-minigame hidden">
-        <div id="controlPanel2" style="padding: 20px; background: white; border-radius: 10px;">
-            <h3 id="questionLabel2" style="font-size: 1.2em; margin-bottom: 15px;">Pergunta...</h3>
-            <input type="text" id="answerInput2" placeholder="Resposta" style="padding: 8px; font-size: 16px;">
-            <button id="submitButton2" style="padding: 8px 16px; font-size: 16px; cursor: pointer;">Responder</button>
-            <p id="feedbackLabel2" style="margin-top: 10px; font-weight: bold;">Digite sua resposta.</p>
+        <div class="container-minigame2">
+            <h4>Sudoku (Raciocinio Lógico)</h4>
+
+            <div id="sudoku-board" class="grid" aria-label="Tabuleiro Sudoku 3 por 3"></div>
+
+            <div class="buttons">
+                <button id="new">Novo Sudoku</button>
+                <button id="check">Verificar</button>
+                <button id="solve">Resolver</button>
+            </div>
+
+            <div id="msg" class="msg" role="status" aria-live="polite"></div>
+            <p class="regras">Use apenas números <strong>1, 2 e 3</strong> (ATENÇÃO!)sem repetir em linhas e colunas.
+            </p>
         </div>
     </div>
 
-    <div id="modal-finish hidden">
+    <div id="modal-finish" class="hidden">
         <div class="container">
-            <video src="">
+            <video >
                 <source>
             </video>
             <p>
-                
+
             </p>
 
             <button>Pegar Tesouro</button>
@@ -173,6 +188,7 @@
 </body>
 <script src="assets/js/main.js"></script>
 <script type="module" src="assets/js/minigame1.js"></script>
-<script type="module" src="assets/js/minigame2.js"></script>
+<script src="assets/js/minigame2.js"></script>
 <script type="module" src="assets/js/game.js"></script>
+
 </html>
