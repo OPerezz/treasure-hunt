@@ -280,7 +280,7 @@ body .container .container-table {
 body .container .container-table .titulo-jogo {
   width: -moz-fit-content;
   width: fit-content;
-  margin: 40px 0;
+  margin: 0 0 40px 0;
   justify-content: flex-start;
   align-items: flex-start;
 }
