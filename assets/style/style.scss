@@ -176,7 +176,7 @@ body {
         text-align: center;
         margin-top: 20px;
         max-width: 100%;
-        margin-bottom: 50px;
+        margin-bottom: 20px;
     }
 
     h3 {
@@ -305,7 +305,7 @@ body {
 
             .titulo-jogo {
                 width: fit-content;
-                margin: 0 0 40px 0;
+                margin: 0 0 10px 0;
                 justify-content: flex-start;
                 align-items: flex-start;
 
@@ -323,8 +323,8 @@ body {
 
                     #game-board {
                         display: grid;
-                        grid-template-columns: repeat(10, 73px);
-                        grid-template-rows: repeat(6, 73px);
+                        grid-template-columns: repeat(10, 60px);
+                        grid-template-rows: repeat(5, 60px);
                         border: 1px solid #004d40;
                         box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
                         background-color: #032288;
@@ -334,8 +334,8 @@ body {
                     }
 
                     .cell {
-                        width: 73px;
-                        height: 73px;
+                        width: 60px;
+                        height: 60px;
                         border: 2px dotted rgba(0, 0, 0, 0.1);
                         display: flex;
                         justify-content: center;
@@ -378,12 +378,14 @@ body {
                                     z-index: 2;
                                     border: none;
                                     border-radius: 10px;
-                                    width: 100px;
+                                    width: 90px;
                                     aspect-ratio: 5/6;
                                     cursor: pointer;
                                     font-weight: bold;
                                     transition: background-color 0.1s;
                                     position: relative;
+                                    font-size: 30px;
+                                    padding-bottom: 20px;
 
                                     &::after {
                                         display: block;
@@ -426,6 +428,7 @@ body {
                             width: 40%;
                             align-self: flex-end;
                             gap: 20px;
+                            margin-bottom: 20px;
 
                             .run,
                             .stop {
@@ -466,6 +469,7 @@ body {
                                 border: 1px solid #cc705b;
                                 border-radius: 5px;
                                 cursor: pointer;
+                                font-size: 11px;
                             }
 
                             #clear-button:hover,
@@ -498,11 +502,12 @@ body {
                                 z-index: 2;
                                 border-radius: 10px;
                                 max-height: 100px;
-                                aspect-ratio: 5/6;
+                                aspect-ratio: 16/9;
                                 cursor: pointer;
                                 font-weight: bold;
                                 transition: background-color 0.1s;
                                 position: relative;
+                                font-size: 30px;
 
                                 &::before {
                                     display: block;
@@ -518,7 +523,7 @@ body {
                                     z-index: 2;
                                 }
 
-                                &:first-child::before, &:nth-child(6)::before, , &:nth-child(11)::before, &:nth-child(16)::before {
+                                &:first-child::before, &:nth-child(5)::before, , &:nth-child(9)::before, &:nth-child(13)::before {
                                     content: none;
                                 }
                             }
