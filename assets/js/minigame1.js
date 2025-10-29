@@ -1,4 +1,4 @@
-export class CorridaMatematica {
+window.CorridaMatematica = class CorridaMatematica {
     constructor() {
         // Variáveis de estado do jogo
         this.posicaoJogador = 80;
@@ -100,10 +100,10 @@ export class CorridaMatematica {
                 alert('Conseguiu chegar ao final!');
 
                 const miniGameCorrida = document.getElementById("modal-minigame");
-                const GamePrincipal = document.getElementById("game-principal");
+                //const GamePrincipal = document.getElementById("game-principal");// Removido, porque fiz uma variável global no game.js - Bruno Lira
 
                 miniGameCorrida.classList.add("hidden")
-                GamePrincipal.classList.remove("hidden")
+                window.GamePrincipal.classList.remove("hidden")
 
                 //FUNCAO PARA PASSAR PASSAR O RETORNO DO JOGO E AVANÇAR O NIVEL
                 window.handleMiniGameComplete();

@@ -1,10 +1,11 @@
-import { CorridaMatematica } from './minigame1.js';
+const { CorridaMatematica } = window;
 
 // --- NOVAS CONSTANTES DE NÍVEIS ---
 
 const miniGameCorrida = document.getElementById("modal-minigame");
 const miniGameEnigma = document.getElementById("modal-minigame2");
 const GamePrincipal = document.getElementById("game-principal");
+window.GamePrincipal = GamePrincipal; //variável global para o GamePrincipal
 
 const START_POS = { col: 0, row: 6 };
 const FINAL_TREASURE_POS = { col: 9, row: 3};
