@@ -216,7 +216,7 @@ function loadMiniGameScript(levelIndex) {
     GamePrincipal.classList.add("hidden");
     miniGameEnigma.classList.remove("hidden");
 
-    const enigma = new EnigmaDoGuardião();
+    const enigma = new miniGameEnigma();
     enigma.startGame();
     }
 }
