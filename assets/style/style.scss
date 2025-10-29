@@ -152,7 +152,7 @@ body {
     overflow-x: hidden;
     position: relative;
     width: 100%;
-    height: auto;
+    height: 100vh;
     display: flex;
     justify-content: center;
     background-color: rgb(178, 218, 245);
@@ -199,6 +199,8 @@ body {
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+        position: absolute;
+        top: 0;
 
         .titulo-jogo {
             width: 100%;
@@ -478,7 +480,7 @@ body {
                         position: relative;
 
                         #command-sequence {
-                            width: 100%;
+                            width: 96%;
                             height: 100%;
                             border: 2px solid #a0522d;
                             border-radius: 20px;
@@ -516,7 +518,7 @@ body {
                                     z-index: 2;
                                 }
 
-                                &:first-child::before {
+                                &:first-child::before, &:nth-child(6)::before, , &:nth-child(11)::before, &:nth-child(16)::before {
                                     content: none;
                                 }
                             }

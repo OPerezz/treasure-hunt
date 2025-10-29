@@ -151,7 +151,7 @@ body {
   overflow-x: hidden;
   position: relative;
   width: 100%;
-  height: auto;
+  height: 100vh;
   display: flex;
   justify-content: center;
   background-color: rgb(178, 218, 245);
@@ -193,6 +193,8 @@ body .container {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  position: absolute;
+  top: 0;
 }
 body .container .titulo-jogo {
   width: 100%;
@@ -434,7 +436,7 @@ body .container .container-table .content #controls .content-sequence {
   position: relative;
 }
 body .container .container-table .content #controls .content-sequence #command-sequence {
-  width: 100%;
+  width: 96%;
   height: 100%;
   border: 2px solid #a0522d;
   border-radius: 20px;
@@ -471,7 +473,7 @@ body .container .container-table .content #controls .content-sequence #command-s
   border-radius: 50%;
   z-index: 2;
 }
-body .container .container-table .content #controls .content-sequence #command-sequence .movement-card:first-child::before {
+body .container .container-table .content #controls .content-sequence #command-sequence .movement-card:first-child::before, body .container .container-table .content #controls .content-sequence #command-sequence .movement-card:nth-child(6)::before, body .container .container-table .content #controls .content-sequence #command-sequence .movement-card:nth-child(11)::before, body .container .container-table .content #controls .content-sequence #command-sequence .movement-card:nth-child(16)::before {
   content: none;
 }
 body .container .container-table .content .mini-game-spot {
