@@ -173,7 +173,7 @@ body h3 {
   text-align: center;
   margin-top: 20px;
   max-width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 body h3 {
   font-family: "Pirata", sans-serif;
@@ -181,10 +181,48 @@ body h3 {
   text-align: left;
   margin-top: 20px;
   max-width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 body h3:nth-child(2) {
   text-align: center;
+}
+body .close {
+  background-color: rgb(192, 167, 87);
+  font-family: "Roboto", sans-serif;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  padding: 20px;
+  position: fixed;
+  right: 10%;
+  top: 10%;
+  cursor: pointer;
+}
+body .close::after {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 28px solid transparent;
+  border-right: 28px solid transparent;
+  border-bottom: 40px solid rgb(192, 167, 87);
+  border-radius: 5px;
+  transform: rotate(90deg);
+  top: 15%;
+  left: 100%;
+  animation: continue 1s ease-in-out infinite;
+}
+@keyframes continue {
+  0% {
+    left: 100%;
+  }
+  50% {
+    left: 105%;
+  }
+  0% {
+    left: 100%;
+  }
 }
 body .container {
   width: 90%;
@@ -237,44 +275,6 @@ body .container .modal .titulo-jogo p {
   font-weight: 500;
   text-align: center;
   max-width: 70%;
-}
-body .container .modal .titulo-jogo .close {
-  background-color: rgb(192, 167, 87);
-  font-family: "Roboto", sans-serif;
-  border: none;
-  border-radius: 10px;
-  font-weight: 500;
-  padding: 20px;
-  position: fixed;
-  right: 10%;
-  top: 10%;
-  cursor: pointer;
-}
-body .container .modal .titulo-jogo .close::after {
-  display: block;
-  position: absolute;
-  content: "";
-  width: 0;
-  height: 0;
-  border-left: 28px solid transparent;
-  border-right: 28px solid transparent;
-  border-bottom: 40px solid rgb(192, 167, 87);
-  border-radius: 5px;
-  transform: rotate(90deg);
-  top: 15%;
-  left: 100%;
-  animation: continue 1s ease-in-out infinite;
-}
-@keyframes continue {
-  0% {
-    left: 100%;
-  }
-  50% {
-    left: 105%;
-  }
-  0% {
-    left: 100%;
-  }
 }
 body .container .container-table {
   width: 100%;
@@ -355,6 +355,7 @@ body .container .container-table .content #controls .container-controls .command
   transition: background-color 0.1s;
   position: relative;
   font-size: 30px;
+  padding-bottom: 20px;
 }
 body .container .container-table .content #controls .container-controls .command #card-options .movement-card::after {
   display: block;
@@ -477,7 +478,7 @@ body .container .container-table .content #controls .content-sequence #command-s
   border-radius: 50%;
   z-index: 2;
 }
-body .container .container-table .content #controls .content-sequence #command-sequence .movement-card:first-child::before, body .container .container-table .content #controls .content-sequence #command-sequence .movement-card:nth-child(5)::before, body .container .container-table .content #controls .content-sequence #command-sequence .movement-card:nth-child(9)::before, body .container .container-table .content #controls .content-sequence #command-sequence .movement-card:nth-child(13)::before {
+body .container .container-table .content #controls .content-sequence #command-sequence .movement-card:first-child::before, body .container .container-table .content #controls .content-sequence #command-sequence .movement-card:nth-child(6)::before, body .container .container-table .content #controls .content-sequence #command-sequence .movement-card:nth-child(11)::before, body .container .container-table .content #controls .content-sequence #command-sequence .movement-card:nth-child(16)::before {
   content: none;
 }
 body .container .container-table .content .mini-game-spot {
@@ -566,4 +567,32 @@ body #modal-minigame2 .regras {
   color: #666;
   font-size: 13px;
   margin-top: 8px;
+}
+body .modal-finish {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body .modal-finish .container {
+  width: 100%;
+  position: relative;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .modal-finish .container video {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+body .modal-finish .container .papiro-finish {
+  width: 40vw;
+  margin-top: 50px;
+  height: auto;
 }/*# sourceMappingURL=style.css.map */

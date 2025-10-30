@@ -64,7 +64,7 @@
         </div>
         <div class="container-table hidden">
             <div class="titulo-jogo flex">
-                <img  class="navio" src="assets/img/navio-pirata.png" alt="Navio Pirata">
+                <img class="navio" src="assets/img/navio-pirata.png" alt="Navio Pirata">
                 <h1>A Busca pelo Tesouro Perdido</h1>
             </div>
             <div class="content flex ">
@@ -125,7 +125,7 @@
             <div class="buttons">
                 <button id="new">Novo Sudoku</button>
                 <button id="check">Verificar</button>
-                <button id="solve">Resolver</button>
+                <button id="solve">Solução</button>
             </div>
 
             <div id="msg" class="msg" role="status" aria-live="polite"></div>
@@ -134,24 +134,23 @@
         </div>
     </div>
 
-    <div id="modal-finish" class="hidden">
+    <div id="modal-finish" class="modal-finish flex  hidden">
         <div class="container">
-            <video>
-                <source>
+            <video no-controls muted loop id="video">
+                <source src="assets/img/video.mp4" type="video/mp4">
             </video>
-            <p>
+            <div id="finish-content" class="hidden">
+                <img class="papiro-finish" src="assets/img/papiro-finish.webp" alt="">
 
-            </p>
 
-            <button>Pegar Tesouro</button>
+                <button class="close" id="close-button" onclick="reloadPage()">Finalizar Jogo</button>
+            </div>
         </div>
     </div>
-
-    <!-- removi os type=Module para poder abrir o arquivo index direto com duplo click -->
 </body>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/minigame1.js"></script>
 <script src="assets/js/minigame2.js"></script>
 <script src="assets/js/game.js"></script>
-<!-- teste do git-->
+
 </html>

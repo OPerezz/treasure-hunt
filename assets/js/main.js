@@ -2,7 +2,14 @@ const closeButton = document.getElementById('close-button');
 const modalInfo = document.querySelector('.papiro');
 const tableGame = document.querySelector('.container-table');
 
-closeButton.addEventListener('click', function() {
+closeButton.addEventListener('click', function () {
     modalInfo.classList.add('hidden')
     tableGame.classList.remove('hidden')
 });
+
+function reloadPage() {
+    setTimeout(() => {
+        location.reload();
+    }, 1000); 
+
+}

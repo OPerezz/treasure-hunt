@@ -5,10 +5,11 @@ const { CorridaMatematica } = window;
 const miniGameCorrida = document.getElementById("modal-minigame");
 const miniGameEnigma = document.getElementById("modal-minigame2");
 const GamePrincipal = document.getElementById("game-principal");
+const papiroFinish = document.getElementById("modal-finish")
 window.GamePrincipal = GamePrincipal; //variável global para o GamePrincipal
 
 const START_POS = { col: 0, row: 6 };
-const FINAL_TREASURE_POS = { col: 9, row: 3};
+const FINAL_TREASURE_POS = { col: 9, row: 3 };
 
 const LEVEL_PATHS = [
     ['RIGHT', 'RIGHT', 'UP', 'RIGHT', 'RIGHT', 'RIGHT'],
@@ -109,11 +110,11 @@ function drawGameBoard() {
             }
 
             if (KRAKEN_POSITIONS.some(pos => pos.col === col && pos.row === row)) {
-                            cell.innerHTML = '🦑';
+                cell.innerHTML = '🦑';
             } else if (ISLAND_POSITIONS.some(pos => pos.col === col && pos.row === row)) {
-                            cell.innerHTML = '🏝️';
+                cell.innerHTML = '🏝️';
             } else if (DOLPHIN_POSITIONS.some(pos => pos.col === col && pos.row === row)) {
-                            cell.innerHTML = '🐬';
+                cell.innerHTML = '🐬';
             }
 
             const isFinalLevel = currentLevel === LEVEL_PATHS.length - 1;
@@ -122,14 +123,14 @@ function drawGameBoard() {
                 cell.innerHTML = '👑';
                 cell.classList.remove('mini-game-spot');
             }
-                gameBoard.appendChild(cell);
+            gameBoard.appendChild(cell);
 
         }
 
-        }
-
-        placeShip(currentShipPos.col, currentShipPos.row);
     }
+
+    placeShip(currentShipPos.col, currentShipPos.row);
+}
 
 
 
@@ -213,12 +214,12 @@ function loadMiniGameScript(levelIndex) {
         const corrida = new CorridaMatematica();
         corrida.startGame();
 
-    } else if (currentLevel == 1){
-    GamePrincipal.classList.add("hidden");
-    miniGameEnigma.classList.remove("hidden");
+    } else if (currentLevel == 1) {
+        GamePrincipal.classList.add("hidden");
+        miniGameEnigma.classList.remove("hidden");
 
-    const enigma = new miniGameEnigma();
-    enigma.startGame();
+        const enigma = new miniGameEnigma();
+        enigma.startGame();
     }
 }
 
@@ -323,10 +324,19 @@ function handleGameOver(isWin, isFinalGame, reason = 'unknown') {
     isGameActive = false;
 
     if (isWin) {
-        alert("🎉 Tesouro Encontrado! Você é um Mestre Navegador!");
+        GamePrincipal.classList.add("hidden")
+        papiroFinish.classList.remove("hidden")
+        const videoBau = document.getElementById("video")
+        const contentFinish = document.getElementById("finish-content")
+        papiroFinish.style.overflow="hidden"
+        videoBau.play();
+
         setTimeout(() => {
-            location.reload();
-        }, 5000); //a cada 1000 é um 1s
+            videoBau.classList.add("hidden")
+            papiroFinish.style.overflow="scroll"
+            contentFinish.classList.remove("hidden")
+        }, 8000);
+
     } else {
         let msg = '';
         if (reason === 'incomplete_path') {
