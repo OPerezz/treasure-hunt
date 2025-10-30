@@ -4,7 +4,6 @@ const checkBtn = document.getElementById('check');
 const solveBtn = document.getElementById('solve');
 const msgEl = document.getElementById('msg');
 const minigame2 = document.getElementById('modal-minigame2');
-//const GamePrincipal = document.getElementById("game-principal");//Removido, porque fiz uma variável global no game.js - Bruno Lira
 
 let current = { solution: null, puzzle: null, mask: null };
 

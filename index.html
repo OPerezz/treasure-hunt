@@ -88,7 +88,7 @@
                             <div id="action-buttons" class="flex">
                                 <div class="stop">
                                     <button id="clear-button">❌ Limpar Sequência</button>
-                                    <button id="reset-button">🔄 Reiniciar Jogo</button>
+                                    <button id="reset-button" hidden>🔄 Reiniciar Jogo</button>
                                 </div>
                                 <div class="run">
                                     <button id="run-button">⚓ Navegar</button>
@@ -129,7 +129,7 @@
             </div>
 
             <div id="msg" class="msg" role="status" aria-live="polite"></div>
-            <p class="regras">Use apenas números <strong>1, 2 e 3</strong> (ATENÇÃO!)sem repetir em linhas e colunas.
+            <p class="regras"style="color: #000000; font-size: 1.1em; font-weight: 500;">Use apenas os números <strong>1, 2 e 3</strong> (ATENÇÃO!) Os números não podem se repetir na mesma linha ou na mesma coluna.
             </p>
         </div>
     </div>
@@ -143,7 +143,7 @@
                 <img class="papiro-finish" src="assets/img/papiro-finish.webp" alt="">
 
 
-                <button class="close" id="close-button" onclick="reloadPage()">Finalizar Jogo</button>
+                <button class="close" id="close-button2" onclick="reloadPage()">Finalizar Jogo</button>
             </div>
         </div>
     </div>

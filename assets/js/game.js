@@ -6,14 +6,7 @@ const miniGameCorrida = document.getElementById("modal-minigame");
 const miniGameEnigma = document.getElementById("modal-minigame2");
 const GamePrincipal = document.getElementById("game-principal");
 const papiroFinish = document.getElementById("modal-finish");
-const videoPath = "assets/img/video-kraken.mp4"
-let videoKraken = `
-            <video id="video-kraken" no-controls muted  style="width:97vw; height: auto; z-index: 1000; aspect-ratio: 16/9; position: absolute; top:50%; left:50%; transform: translate(-50%, -50%) "> 
-                <source src="${videoPath}"> 
-            </video>
-
-`
-
+const videoPath = "assets/img/video-kraken.mp4"; // Caminho do vídeo
 
 window.GamePrincipal = GamePrincipal; //variável global para o GamePrincipal
 
@@ -93,7 +86,7 @@ function generatePathCoordinates() {
 // ----------------------------------------------------------------------
 
 function drawGameBoard() {
-    gameBoard.innerHTML = '';
+    gameBoard.innerHTML = ''; // Esta linha agora vai funcionar!
 
     for (let row = 0; row < GRID_ROWS; row++) {
         for (let col = 0; col < GRID_COLS; col++) {
@@ -226,9 +219,6 @@ function loadMiniGameScript(levelIndex) {
     } else if (currentLevel == 1) {
         GamePrincipal.classList.add("hidden");
         miniGameEnigma.classList.remove("hidden");
-
-        const enigma = new miniGameEnigma();
-        enigma.startGame();
     }
 }
 
@@ -328,11 +318,11 @@ function runSequence() {
     executeMove(0);
 }
 
-
 function handleGameOver(isWin, isFinalGame, reason = 'unknown') {
     isGameActive = false;
 
     if (isWin) {
+
         GamePrincipal.classList.add("hidden")
         papiroFinish.classList.remove("hidden")
         const videoBau = document.getElementById("video")
@@ -347,45 +337,79 @@ function handleGameOver(isWin, isFinalGame, reason = 'unknown') {
         }, 8000);
 
     } else {
+
         let msg = '';
+
+
+        const resetarNivel = () => {
+             setTimeout(() => {
+                if (isFinalGame) {
+                    resetGame(true);
+                } else {
+                    if (currentLevel === 0) {
+                        currentShipPos = { ...START_POS };
+                    } else {
+                        currentShipPos = { ...MINI_GAME_UNLOCK_POSITIONS[currentLevel - 1] };
+                    }
+                    resetGame(false);
+                }
+            }, 500);
+        };
+
         if (reason === 'incomplete_path') {
             msg = "⚠️ Caminho Incompleto! Infelizmente, o vento já não faz mais nosso navio andar. Adicione mais comandos!";
+            alert(msg);
+            resetarNivel();
+
         } else if (reason === 'wrong_move') {
-            GamePrincipal.innerHTML += videoKraken;
-            const videoWrong = document.getElementById('video-kraken');
+
+            const videoWrong = document.createElement('video');
+            videoWrong.id = 'video-kraken';
+            videoWrong.src = videoPath; // 'videoPath' já está definida no topo
+            videoWrong.muted = true;
+            videoWrong.style.cssText = "width:97vw; height: auto; z-index: 1000; aspect-ratio: 16/9; position: absolute; top:50%; left:50%; transform: translate(-50%, -50%)";
+
+            GamePrincipal.appendChild(videoWrong);
             videoWrong.play();
-            
-                msg = "💀 Caiu em Águas Profundas! O Kraken detruiu seu navio. Tente o Nível Novamente!";
+
+            msg = "💀 Caiu em Águas Profundas! O Kraken destruiu seu navio. Tente o Nível Novamente!";
 
             setTimeout(() => {
-                videoWrong.remove();
-            }, 5000)
+                if (videoWrong) {
+                    videoWrong.remove(); // Agora .remove() é seguro
+                }
+
+                alert(msg);
+
+                if (isFinalGame) {
+                    resetGame(true);
+                } else {
+                    if (currentLevel === 0) {
+                        currentShipPos = { ...START_POS };
+                    } else {
+                        currentShipPos = { ...MINI_GAME_UNLOCK_POSITIONS[currentLevel - 1] };
+                    }
+                    resetGame(false); // Agora resetGame() vai funcionar!
+                }
+
+            }, 5000);
 
         } else {
+
             msg = "💀 Falha na Navegação! O seu Navio encalhou. Tente o Nível Novamente!";
-
+            alert(msg);
+            resetarNivel();
         }
-
-        alert(msg);
-
-
-        setTimeout(() => {
-            if (isFinalGame) {
-                resetGame(true);
-            } else {
-                if (currentLevel === 0) {
-                    currentShipPos = { ...START_POS };
-                } else {
-                    currentShipPos = { ...MINI_GAME_UNLOCK_POSITIONS[currentLevel - 1] };
-                }
-                resetGame(false);
-            }
-        }, 500);
     }
 }
 
+
+
 function showMessage(msg, type = 'info') {
-    if (!messageDiv) return;
+    if (!messageDiv) {
+        console.warn("Elemento #mensagem-jogo não encontrado. Mensagem não exibida:", msg);
+        return;
+    }
 
     messageDiv.textContent = msg;
     messageDiv.className = '';
