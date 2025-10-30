@@ -5,7 +5,16 @@ const { CorridaMatematica } = window;
 const miniGameCorrida = document.getElementById("modal-minigame");
 const miniGameEnigma = document.getElementById("modal-minigame2");
 const GamePrincipal = document.getElementById("game-principal");
-const papiroFinish = document.getElementById("modal-finish")
+const papiroFinish = document.getElementById("modal-finish");
+const videoPath = "assets/img/video-kraken.mp4"
+let videoKraken = `
+            <video id="video-kraken" no-controls muted  style="width:97vw; height: auto; z-index: 1000; aspect-ratio: 16/9; position: absolute; top:50%; left:50%; transform: translate(-50%, -50%) "> 
+                <source src="${videoPath}"> 
+            </video>
+
+`
+
+
 window.GamePrincipal = GamePrincipal; //variável global para o GamePrincipal
 
 const START_POS = { col: 0, row: 6 };
@@ -328,12 +337,12 @@ function handleGameOver(isWin, isFinalGame, reason = 'unknown') {
         papiroFinish.classList.remove("hidden")
         const videoBau = document.getElementById("video")
         const contentFinish = document.getElementById("finish-content")
-        papiroFinish.style.overflow="hidden"
+        papiroFinish.style.overflow = "hidden"
         videoBau.play();
 
         setTimeout(() => {
             videoBau.classList.add("hidden")
-            papiroFinish.style.overflow="scroll"
+            papiroFinish.style.overflow = "scroll"
             contentFinish.classList.remove("hidden")
         }, 8000);
 
@@ -342,12 +351,23 @@ function handleGameOver(isWin, isFinalGame, reason = 'unknown') {
         if (reason === 'incomplete_path') {
             msg = "⚠️ Caminho Incompleto! Infelizmente, o vento já não faz mais nosso navio andar. Adicione mais comandos!";
         } else if (reason === 'wrong_move') {
-            msg = "💀 Caiu em Águas Rasas! O seu Navio encalhou. Tente o Nível Novamente!";
+            GamePrincipal.innerHTML += videoKraken;
+            const videoWrong = document.getElementById('video-kraken');
+            videoWrong.play();
+            
+                msg = "💀 Caiu em Águas Profundas! O Kraken detruiu seu navio. Tente o Nível Novamente!";
+
+            setTimeout(() => {
+                videoWrong.remove();
+            }, 5000)
+
         } else {
             msg = "💀 Falha na Navegação! O seu Navio encalhou. Tente o Nível Novamente!";
+
         }
 
         alert(msg);
+
 
         setTimeout(() => {
             if (isFinalGame) {
@@ -360,7 +380,7 @@ function handleGameOver(isWin, isFinalGame, reason = 'unknown') {
                 }
                 resetGame(false);
             }
-        }, 3000);
+        }, 500);
     }
 }
 
